@@ -1,0 +1,98 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Avodha Shopping</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{%static 'hm/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{%static 'hm/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{%static 'hm/assets/css/templatemo-sixteen.css' %}">
+    <link rel="stylesheet" href="{%static 'hm/assets/css/owl.css' %}">
+
+  </head>
+
+  <body>
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <a class="navbar-brand" href="index.html"><h2>AVODHA <em>SHOPPING</em></h2></a>
+
+        <style>
+              ul {
+                list-style-type: none;
+                margin: 0;
+                padding:0;
+                background-color: #333;
+              }
+
+              li {
+                float: left;
+              }
+
+              li a, .dropbtn {
+                display: inline-block;
+                color: white;
+                text-align: centre;
+                padding:10px;
+                text-decoration: none;
+              }
+              li a:hover, .dropdown:hover .dropbtn {
+                background-color: green;
+                }
+              .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 100px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+              }
+
+              .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+              }
+              .dropdown-content a:hover {background-color: #f1f1f1;}
+
+              .dropdown:hover .dropdown-content {
+                display: block;
+              }
+        </style>
+
+<ul>
+  <li><a href="/">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">FILTER</a>
+    <div class="dropdown-content">
+      <a href="/">All</a>
+      {% for i in ct %}
+      <a href={{i.get_url}}> {{i.name}}</a>
+      {% endfor %}
+    </div>
+       <li><a href="{% url 'cartDetails' %}"><i class="fa fa-shopping-cart" style="font-size:20px"></i>&nbsp;{{itc}}</a></li>
+   <li><a href="{% url 'register' %}">Register</a></li>
+  <li><a href="{% url 'login' %}">Login</a></li>
+</ul>
+
+        <form class="form-inline" action="{% url 'search' %}" method="get">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search here" name="q">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+    </header>
+  {% block content %}
+  {% endblock %}
+  </body>
+</html>
